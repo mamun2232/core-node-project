@@ -14,8 +14,8 @@ app.config = {
 }
 
 // note: testing for file system 
-data.create('test', 'newFile' , {name: "Mamun" , job: "developer"} ,(error)=>{
-// console.log('error was' , error);
+/* data.create('test', 'newFile' , {name: "Mamun" , job: "developer"} ,(error)=>{
+console.log('error was' , error);
 })
 
 data.read('test' , 'newFile' , (eror , result) =>{
@@ -29,7 +29,7 @@ data.update('test', 'newFile' , {name: "Mamun" , job: "Desine"} ,(error)=>{
 data.delete('test', 'newFile' ,(error)=>{
       console.log('error was' , error);
       })
-
+ */
 
 
 
@@ -37,8 +37,8 @@ data.delete('test', 'newFile' ,(error)=>{
 // create a server 
 app.createServer = () => {
       const server  = http.createServer(app.handelReqRes)
-      server.listen(enverment.port, () =>{
-            console.log(`listening to port ${enverment.port}`);
+      server.listen(app.config.port, () =>{
+            console.log(`listening to port ${app.config.port}`);
       })
 }
 

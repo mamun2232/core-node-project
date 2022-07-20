@@ -1,7 +1,7 @@
 const data = require("../../liv/data");
 const { hash } = require("../../helpers/utilitis");
 const { parseJson } = require("../../helpers/utilitis");
-const { read } = require("../../liv/data");
+const tokenHandeler = require('./tokenHandelers')
 // modules scapholding
 const handeler = {};
 
@@ -20,6 +20,7 @@ handeler._user = {};
 
 // user post
 handeler._user.post = (requestProperties, callback) => {
+
   // chack user information
   const firstName =
     typeof requestProperties.body.firstName === "string" &&
@@ -101,7 +102,14 @@ handeler._user.get = (requestProperties, callback) => {
       : false;
 
   if (phone) {
-    // look up the user (user ache kina chaeck korbo )
+    // verifayToken 
+    const token = typeof requestProperties.headersObj === 'string' ? requestProperties.headersObj : false
+    tokenHandeler._token(token , phone , (tokenId) =>{
+
+      
+      if(tokenId){
+
+         // look up the user (user ache kina chaeck korbo )
     data.read("users", phone, (error, data) => {
       // object takee pass kora hoise
       const user = { ...parseJson(data) };
@@ -115,8 +123,9 @@ handeler._user.get = (requestProperties, callback) => {
     });
   } else {
     callback(404, { error: "Request Was a not found" });
-  }
-};
+        
+      }
+    }) }};
 
 // user update
 handeler._user.update = (requestProperties, callback) => {

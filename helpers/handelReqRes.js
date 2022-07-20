@@ -19,6 +19,8 @@ handeler.handelReqRes  = ( req , res) =>{
       const qyeryStringObj = persedUrl.query
       const headersObj = req.headers
 
+      // console.log(qyeryStringObj);
+
       const requestProperties = {
             persedUrl,
             path ,

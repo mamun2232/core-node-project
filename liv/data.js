@@ -43,8 +43,8 @@ lib.create = (dir, file, data, callback) => {
 lib.read = (dir , file , callback) =>{
       // read data 
       fs.readFile(lib.basedir + dir + "/" + file + ".json",
-      "utf8", (data , eror) =>{
-            callback(data)
+      "utf8", (error , data) =>{
+            callback(error, data)
       })
 }
 

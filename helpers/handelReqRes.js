@@ -14,7 +14,7 @@ handeler.handelReqRes  = ( req , res) =>{
       // get the url perse in
       const persedUrl = url.parse(req.url , true)
       const path = persedUrl.path
-      const trimmedPath = path.replace(/^\/+|\/+$/g, '')
+      const trimmedPath = path.replace(/^\/+|\/+$/g, '');
       const method = req.method.toLowerCase()
       const qyeryStringObj = persedUrl.query
       const headersObj = req.headers
